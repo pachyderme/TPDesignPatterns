@@ -28,7 +28,7 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         public Node(string content)
         {
             stringContent = content;
-            EnrichChildrenNodes(content);
+            childrenNodes = new List<Node>();
         }
 
         /// <summary>
@@ -63,18 +63,6 @@ namespace TPDesignPatterns.Models.Messages.Nodes
             }
 
             return result;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        protected void EnrichChildrenNodes(string content)
-        {
-            if (childrenNodes == null)
-                childrenNodes = new List<Node>();
-
-            // parse content
         }
     }
 }

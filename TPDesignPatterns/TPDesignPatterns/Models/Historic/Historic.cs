@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using TPDesignPatterns.Models.Messages;
+using TPDesignPatterns.Models.Messages.Filters;
 
 namespace TPDesignPatterns.Models.Historic
 {
@@ -12,13 +14,24 @@ namespace TPDesignPatterns.Models.Historic
         /// </summary>
         private static Historic _instance;
 
+        private static List<IMessageFilter> filters;
+
         public List<Message> messages;
 
         private Historic()
         {
-            messages = new List<Message>();
+            messages = new List<Message>() {
+                new Message("Hey ! coucou ! saaalluuuttt !! #545454 http://coucou.fr", null),
+                new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette", null)
+            };
 
-            messages.Add(new Message("Hey ! coucou ! saaalluuuttt !! #545454 http://coucou.fr", null));
+            filters = new List<IMessageFilter>() {
+                new ColorMessageFilter(),
+                new FontMessageFilter(),
+                new LinkMessageFilter()
+            };
+
+            FilterAllMessages();
         }
 
         /// <summary>
@@ -52,6 +65,20 @@ namespace TPDesignPatterns.Models.Historic
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void FilterAllMessages()
+        {
+            foreach(Message m in messages)
+            {
+                foreach(IMessageFilter f in filters)
+                {
+                    f.Filter(m.nodeContent);
+                }
+            }
         }
     }
 }
