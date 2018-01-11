@@ -19,6 +19,11 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         /// <summary>
         /// 
         /// </summary>
+        public string stringContent { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="content"></param>
         public Node(string content)
         {
