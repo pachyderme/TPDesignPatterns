@@ -21,7 +21,7 @@ namespace TPDesignPatterns.Models.Historic
         private Historic()
         {
             messages = new List<Message>() {
-                new Message("Hey ! coucou ! saaalluuuttt !! #545454 http://coucou.fr", null),
+                new Message("Hey ! coucou ! saaalluuuttt !! #545454 #111 http://coucou.fr", null),
                 new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette#333", null)
             };
 

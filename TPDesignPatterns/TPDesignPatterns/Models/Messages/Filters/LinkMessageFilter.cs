@@ -11,13 +11,11 @@ namespace TPDesignPatterns.Models.Messages.Filters
         public override void Filter(Node n)
         {
             Regex myRegex = new Regex(@"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)");
-            CaptureCollection cc = myRegex.Match(n.stringContent).Captures;
-            foreach (Capture c in cc)
+
+            foreach (Match m in myRegex.Matches(n.stringContent))
             {
-                LinkNode ln = new LinkNode(c.Value);
+                LinkNode ln = new LinkNode(m.Value);
                 n.childrenNodes.Add(ln);
-                Historic.Historic.filters[0].Filter(ln);
-                Historic.Historic.filters[1].Filter(ln);
             }
         }
     }

@@ -72,7 +72,9 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         public override string ToString()
         {
             Console.WriteLine(stringContent);
-            childrenNodes.ForEach(c => Console.WriteLine(c.ToString()));
+            if (!Program.searching) 
+                childrenNodes.ForEach(c => Console.WriteLine(c.ToString()));
+
             return "";
         }
     }
