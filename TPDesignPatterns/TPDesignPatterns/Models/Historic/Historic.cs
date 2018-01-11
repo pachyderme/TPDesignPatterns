@@ -22,7 +22,8 @@ namespace TPDesignPatterns.Models.Historic
         {
             messages = new List<Message>() {
                 new Message("Hey ! coucou ! saaalluuuttt !! #545454 http://coucou.fr", null),
-                new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette", null)
+                new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette", null),
+                new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null)
             };
 
             filters = new List<IMessageFilter>() {
