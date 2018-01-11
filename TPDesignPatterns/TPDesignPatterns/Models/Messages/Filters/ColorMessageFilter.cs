@@ -10,12 +10,12 @@ namespace TPDesignPatterns.Models.Messages.Filters
     {
         public override void Filter(Node n)
         {
-            Regex myRegex = new Regex("/#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/g");
-            foreach(Capture c in myRegex.Match(n.stringContent).Captures)
+            Regex myRegex = new Regex("#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})");
+            CaptureCollection cc = myRegex.Match(n.stringContent).Captures;
+            foreach (Capture c in cc)
             {
                 ColorNode cn = new ColorNode(c.Value);
                 n.childrenNodes.Add(cn);
-                Filter(cn);
             }
         }
 

@@ -64,5 +64,16 @@ namespace TPDesignPatterns.Models.Messages.Nodes
 
             return result;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            Console.WriteLine(stringContent);
+            childrenNodes.ForEach(c => Console.WriteLine(c.ToString()));
+            return "";
+        }
     }
 }

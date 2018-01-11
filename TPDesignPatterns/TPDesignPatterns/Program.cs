@@ -9,7 +9,7 @@ namespace TPDesignPatterns
         {
             Historic h = Historic.GetInstance();
 
-            h.messages.ForEach(m => Console.WriteLine($"Message : {m.ToString()}"));
+            h.messages.ForEach(m => m.ToString());
 
             Console.ReadLine();
         }
