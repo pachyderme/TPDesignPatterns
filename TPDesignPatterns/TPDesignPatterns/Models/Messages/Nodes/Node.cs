@@ -27,7 +27,8 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         /// <param name="content"></param>
         public Node(string content)
         {
-            EnrichChildrenNodes(content);
+            stringContent = content;
+            childrenNodes = new List<Node>();
         }
 
         /// <summary>
@@ -42,23 +43,37 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="s"></param>
         /// <returns></returns>
-        protected bool Find(int code)
+        public bool Find(string s)
         {
-            return true;
+            bool result = stringContent.Contains(s);
+
+            if (!result)
+            {
+                foreach (Node n in childrenNodes)
+                {
+                    result = n.Find(s);
+
+                    if (result)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="content"></param>
-        protected void EnrichChildrenNodes(string content)
+        /// <returns></returns>
+        public override string ToString()
         {
-            if (childrenNodes == null)
-                childrenNodes = new List<Node>();
-
-            // parse content
+            Console.WriteLine(stringContent);
+            childrenNodes.ForEach(c => Console.WriteLine(c.ToString()));
+            return "";
         }
     }
 }

@@ -69,6 +69,25 @@ namespace TPDesignPatterns.Models.Messages
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public bool Search(String s)
+        {
+            return nodeContent.Find(s);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return nodeContent.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="content"></param>
         /// <returns></returns>
         private Node GetNodeContent(string content)
