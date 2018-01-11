@@ -14,7 +14,7 @@ namespace TPDesignPatterns.Models.Historic
         /// </summary>
         private static Historic _instance;
 
-        private static List<IMessageFilter> filters;
+        public static List<IMessageFilter> filters;
 
         public List<Message> messages;
 
