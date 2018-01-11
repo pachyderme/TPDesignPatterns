@@ -9,5 +9,14 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         public TextNode(string content) : base(content)
         {
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return stringContent;
+        }
     }
 }

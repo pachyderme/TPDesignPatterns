@@ -1,4 +1,5 @@
 ﻿using System;
+using TPDesignPatterns.Models.Historic;
 
 namespace TPDesignPatterns
 {
@@ -6,7 +7,11 @@ namespace TPDesignPatterns
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Historic h = Historic.GetInstance();
+
+            h.messages.ForEach(m => Console.WriteLine($"Message : {m.ToString()}"));
+
+            Console.ReadLine();
         }
     }
 }
