@@ -16,6 +16,8 @@ namespace TPDesignPatterns.Models.Messages.Filters
             {
                 ColorNode cn = new ColorNode(c.Value);
                 n.childrenNodes.Add(cn);
+                Historic.Historic.filters[1].Filter(cn);
+                Historic.Historic.filters[2].Filter(cn);
             }
         }
 

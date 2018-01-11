@@ -14,7 +14,7 @@ namespace TPDesignPatterns.Models.Historic
         /// </summary>
         private static Historic _instance;
 
-        private static List<IMessageFilter> filters;
+        public static List<IMessageFilter> filters;
 
         public List<Message> messages;
 
@@ -22,7 +22,7 @@ namespace TPDesignPatterns.Models.Historic
         {
             messages = new List<Message>() {
                 new Message("Hey ! coucou ! saaalluuuttt !! #545454 http://coucou.fr", null),
-                new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette", null)
+                new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette#333", null)
             };
 
             filters = new List<IMessageFilter>() {

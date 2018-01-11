@@ -16,6 +16,8 @@ namespace TPDesignPatterns.Models.Messages.Filters
             {
                 LinkNode ln = new LinkNode(c.Value);
                 n.childrenNodes.Add(ln);
+                Historic.Historic.filters[0].Filter(ln);
+                Historic.Historic.filters[1].Filter(ln);
             }
         }
     }
