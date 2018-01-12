@@ -22,6 +22,7 @@ namespace TPDesignPatterns
             {
                 Console.ForegroundColor = ConsoleColor.White;
 
+                Console.WriteLine("SEARCH : ");
                 String search = Console.ReadLine();
 
                 Console.ForegroundColor = ConsoleColor.Green;

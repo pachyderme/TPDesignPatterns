@@ -47,7 +47,7 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         /// <returns></returns>
         public bool Find(string s)
         {
-            bool result = stringContent.Contains(s);
+            bool result = stringContent.ToLower().Contains(s.ToLower());
 
             if (!result)
             {
