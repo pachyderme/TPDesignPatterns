@@ -12,7 +12,6 @@ namespace TPDesignPatterns.Models.Messages.Filters
         {
             Regex baseRegex = new Regex(@"(\[*c='(.*)']).*?(\[\/c])");
 
-            int count = 0;
             foreach (Match m in baseRegex.Matches(n.StringContent))
             {
                 Regex colorRegex = new Regex(@"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})");
@@ -26,8 +25,7 @@ namespace TPDesignPatterns.Models.Messages.Filters
 
                 cn.StringContent = RemoveTags($"[c='{cn.Color}']", "[/c]", m);
 
-                AddNode(m, cn, count, n);
-                count++;
+                AddNode(m, cn, n);
             }
         }
     }

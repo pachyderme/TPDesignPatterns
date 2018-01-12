@@ -19,15 +19,12 @@ namespace TPDesignPatterns.Models.Messages.Filters
                     Filter(nChild);
                 }
             }
-            else
-            {
-                FilterNode(n);
-            }
+            FilterNode(n);
         }
 
-        protected void AddNode(Match m, Node n, int count, Node parent)
+        protected void AddNode(Match m, Node n, Node parent)
         {
-            parent.StringContent = parent.StringContent.Replace(m.Value, $"[{count}]");
+            parent.StringContent = parent.StringContent.Replace(m.Value, $"[{parent.ChildrenNodes.Count}]");
             parent.ChildrenNodes.Add(n);
             Filter(n);
         }

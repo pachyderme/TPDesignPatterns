@@ -16,7 +16,6 @@ namespace TPDesignPatterns.Models.Messages.Filters
         {
             Regex myRegex = new Regex(@"(\[*i]).*?(\[/i])|(\[b])(.*?)(\[/b])|(\[u])(.*?)(\[/u])");
 
-            int count = 0;
             foreach (Match m in myRegex.Matches(n.StringContent))
             {
                 string endTag = string.Empty;
@@ -41,10 +40,10 @@ namespace TPDesignPatterns.Models.Messages.Filters
                     startTag = "[u]";
                     endTag = "[/u]";
                 }
+
                 TextNode tn = new TextNode(RemoveTags(startTag, endTag, m), fs);
 
-                AddNode(m, tn, count, n);
-                count++;
+                AddNode(m, tn, n);
             }
         }
     }

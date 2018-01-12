@@ -20,7 +20,7 @@ namespace TPDesignPatterns
 
         static void Main(string[] args)
         {
-            Client client = new Client();
+            Client client = new Client("Tuning");
             client.Connect();
 
             while (true)
@@ -35,7 +35,7 @@ namespace TPDesignPatterns
                 switch (search.ToUpper())
                 {
                     case Command.EXPORTJSON:
-
+                        ExportData = new ExportJSON();
                         isExport = true;
                         break;
                     case Command.EXPORTSQL:
@@ -43,6 +43,8 @@ namespace TPDesignPatterns
                         isExport = true;
                         break;
                     case Command.EXPORTXML:
+                        ExportData = new ExportXML();
+                        isExport = true;
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -58,7 +60,6 @@ namespace TPDesignPatterns
 
                         Console.WriteLine($"---------- SEARCH {search} ----------");
                         break;
-
                 }
 
                 if (isExport)

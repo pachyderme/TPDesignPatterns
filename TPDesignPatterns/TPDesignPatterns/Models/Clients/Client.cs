@@ -13,12 +13,12 @@ namespace TPDesignPatterns.Models.Clients
         public List<ClientObserver> ClientObservers { get; set; }
         public ClientState State { get; set; }
         public HistoricWatcher HistoricWatcher { get; set; }
+        public string Pseudo { get; set; }
 
-
-
-        public Client()
+        public Client(string pseudo)
         {
             ClientObservers = new List<ClientObserver>();
+            Pseudo = pseudo;
         }
 
         public void Connect()

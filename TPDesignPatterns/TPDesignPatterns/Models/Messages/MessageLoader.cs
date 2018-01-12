@@ -6,14 +6,14 @@ namespace TPDesignPatterns.Models.Messages
 {
     public class MessageLoader : IMessage
     {
-        public int index { get; set; }
-        public int page { get; set; } 
+        public int Index { get; set; }
+        public int Page { get; set; } 
 
         public List<Message> GetMessages()
         {
-            index = 2;
-            page = 0;
-            return Message.GetMessages(index, page);
+            Index = 5;
+            Page = 0;
+            return Message.GetMessages(Index, Page);
         }
 
         public bool Send()

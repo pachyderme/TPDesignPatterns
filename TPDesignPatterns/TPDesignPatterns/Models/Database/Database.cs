@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TPDesignPatterns.Models.Messages;
 using System.Linq;
+using TPDesignPatterns.Models.Clients;
 
 namespace TPDesignPatterns.Models.Database
 {
@@ -21,7 +22,7 @@ namespace TPDesignPatterns.Models.Database
 
         public Database()
         {
-            
+
         }
 
         /// <summary>
@@ -33,10 +34,10 @@ namespace TPDesignPatterns.Models.Database
         public List<Message> GetMessages(int index, int page)
         {
             Messages = new List<Message>() {
-                new Message("Hey ! coucou ! saaalluuuttt !! #545454 http://coucou.fr", null),
-                new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette", null),
-                new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null),
-                new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null)
+                new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", new Client("Titome")),
+                new Message("[i]Il fait trop chaud au brésil je trouve ça trop chouette !!! [b]vive le [l='https://bresil.com']brésil[/l][/b] !![/i]", new Client("Brésil")),
+                new Message("Merci toto [i]tu sers vraiment à [b]rien[/b].[/i]", new Client("Michel")),
+                new Message("[b]0[/b] + [c='#333']0[/c] = la tête à [l='http://toto.fr']toto[/l]", new Client("Toto"))
             };
             return Messages.OrderByDescending(m => m.SendDate).Take(index).ToList();
         }

@@ -12,7 +12,6 @@ namespace TPDesignPatterns.Models.Messages.Filters
         {
             Regex baseRegex = new Regex(@"(\[*l='(.*)']).*?(\[\/l])");
 
-            int count = 0;
             foreach (Match m in baseRegex.Matches(n.StringContent))
             {
                 Regex linkRegex = new Regex(@"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)");
@@ -26,8 +25,7 @@ namespace TPDesignPatterns.Models.Messages.Filters
 
                 ln.StringContent = RemoveTags($"[l='{ln.Link}']", "[/l]", m);
 
-                AddNode(m, ln, count, n);
-                count++;
+                AddNode(m, ln, n);
             }
         }
     }
