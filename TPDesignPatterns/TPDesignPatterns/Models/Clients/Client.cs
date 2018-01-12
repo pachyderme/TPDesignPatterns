@@ -23,10 +23,10 @@ namespace TPDesignPatterns.Models.Clients
 
         public void Connect()
         {
-            if (state == null)
-                state = new ConnectedState();
+            if (State == null)
+                State = new ConnectedState();
 
-            state.Connected(this);
+            State.Connected(this);
 
             Console.WriteLine("================ ALL MESSAGES =================="); 
 

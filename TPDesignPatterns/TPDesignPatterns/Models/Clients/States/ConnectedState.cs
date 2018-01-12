@@ -13,7 +13,7 @@ namespace TPDesignPatterns.Models.Clients.States
 
         public override void Disconnected(Client c)
         {
-            c.Save();
+            c.Sauvegarder();
             SetState(c, new DisconnectedState());
         }
     }
