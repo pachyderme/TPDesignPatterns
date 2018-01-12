@@ -6,8 +6,8 @@ using System.Text;
 
 namespace TPDesignPatterns.Models.Exports
 {
-    public class ExportSQL : ExportData
+    public class ExportXML : ExportData
     {
-        public override void Export() => ExportFile(ExportDataType.JSON);
+        public override void Export() => ExportFile(ExportDataType.XML);
     }
 }

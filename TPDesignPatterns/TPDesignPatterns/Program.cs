@@ -40,7 +40,7 @@ namespace TPDesignPatterns
                 switch (search.ToUpper())
                 {
                     case Command.EXPORTJSON:
-
+                        exportData = new ExportJSON();
                         isExport = true;
                         break;
                     case Command.EXPORTSQL:
@@ -48,6 +48,8 @@ namespace TPDesignPatterns
                         isExport = true;
                         break;
                     case Command.EXPORTXML:
+                        exportData = new ExportXML();
+                        isExport = true;
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Green;
