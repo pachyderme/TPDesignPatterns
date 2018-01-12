@@ -71,7 +71,8 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         /// <returns></returns>
         public override string ToString()
         {
-            StringBuilder result = new StringBuilder(stringContent);
+            StringBuilder result = new StringBuilder();
+            result.AppendLine(stringContent);
             if (Program.displayCompleteMessage)
                 childrenNodes.ForEach(c =>
                 {

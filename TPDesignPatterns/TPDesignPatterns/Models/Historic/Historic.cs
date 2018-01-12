@@ -21,9 +21,10 @@ namespace TPDesignPatterns.Models.Historic
         private Historic()
         {
             messages = new List<Message>() {
-                new Message("Hey ! coucou ! saaalluuuttt !! #545454 http://coucou.fr", null),
-                new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette", null),
-                new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null)
+                new Message("ITALIQUE + BOLD SIMPLE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null),
+                new Message("ITALIQUE + BOLD COMPLEXE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle [b]Titome[/b] et je suis imberbe[/i]", null),
+                new Message("LINK : [l='http://coucou.fr']test[/l]", null),
+                new Message("COLOR : [c='#333']test[/c]", null)
             };
 
             filters = new List<IMessageFilter>() {

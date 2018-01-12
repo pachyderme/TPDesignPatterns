@@ -14,6 +14,7 @@ namespace TPDesignPatterns.Models.Messages.Nodes
     public class TextNode : Node
     {
         public FontStyle fs;
+
         public TextNode(string content, FontStyle fs = FontStyle.None) : base(content)
         {
             this.fs = fs;
