@@ -19,6 +19,18 @@ namespace TPDesignPatterns.Models.Historic.Memento
         {
             HistoricMementos.Add(hm);
         }
+        public HistoricMemento getHistoricMemento()
+        {
+            HistoricMemento hmReturn = null;
+            foreach (HistoricMemento hm in HistoricMementos)
+            {
+                if (hm.SavingDate == hm.Message.SendDate)
+                {
+                    hmReturn = hm;
+                }
+            }
+            return hmReturn;
+        }
 
     }
 }

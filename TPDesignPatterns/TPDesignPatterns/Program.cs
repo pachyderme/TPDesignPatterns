@@ -11,6 +11,7 @@ namespace TPDesignPatterns
         public const string EXPORTSQL = "EXPORTSQL";
         public const string EXPORTJSON = "EXPORTJSON";
         public const string EXPORTXML = "EXPORTXML";
+        public const string DISCONNECT = "DISCONNECT";
     }
 
     class Program
@@ -43,6 +44,9 @@ namespace TPDesignPatterns
                         isExport = true;
                         break;
                     case Command.EXPORTXML:
+                        break;
+                    case Command.DISCONNECT:
+                        client.Disconnect();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Green;
