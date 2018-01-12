@@ -7,6 +7,5 @@ namespace TPDesignPatterns.Models.Messages
     public interface IMessage
     {
         List<Message> GetMessages();
-        bool Send();
     }
 }

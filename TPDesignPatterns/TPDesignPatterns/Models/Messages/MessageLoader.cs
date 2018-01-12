@@ -11,14 +11,9 @@ namespace TPDesignPatterns.Models.Messages
 
         public List<Message> GetMessages()
         {
-            Index = 5;
+            Index = 10;
             Page = 0;
             return Message.GetMessages(Index, Page);
-        }
-
-        public bool Send()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -56,15 +56,6 @@ namespace TPDesignPatterns.Models.Messages
         }
 
         /// <summary>
-        /// Send the message
-        /// </summary>
-        /// <returns></returns>
-        public bool Send()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Search the element on the message's node
         /// </summary>
         /// <param name="s"></param>

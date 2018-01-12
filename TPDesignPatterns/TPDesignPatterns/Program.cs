@@ -3,6 +3,7 @@ using TPDesignPatterns.Models.Exports;
 using TPDesignPatterns.Models.Historic;
 using TPDesignPatterns.Models.Clients;
 using TPDesignPatterns.Models.Database;
+using TPDesignPatterns.Models.Messages;
 
 namespace TPDesignPatterns
 {
@@ -12,6 +13,7 @@ namespace TPDesignPatterns
         public const string EXPORTJSON = "EXPORTJSON";
         public const string EXPORTXML = "EXPORTXML";
         public const string DISCONNECT = "DISCONNECT";
+        public const string SEARCH = "SEARCH";
     }
 
     class Program
@@ -28,9 +30,9 @@ namespace TPDesignPatterns
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("SEARCH / COMMAND (EXPORTSQL | EXPORTJSON | EXPORTXML) : ");
-                String search = Console.ReadLine();
+                String input = Console.ReadLine();
 
-                switch (search.ToUpper())
+                switch (input.ToUpper())
                 {
                     case Command.EXPORTJSON:
                         client.Export(ExportDataType.JSON);
@@ -44,11 +46,16 @@ namespace TPDesignPatterns
                     case Command.DISCONNECT:
                         client.Disconnect();
                         break;
-                    default:
+                    case Command.SEARCH:
+
+                        Console.WriteLine("Enter your search :");
+
+                        string search = Console.ReadLine();
+
                         Console.ForegroundColor = ConsoleColor.Green;
 
                         Console.WriteLine($"---------- SEARCH {search} ----------");
-                        client.GetMessage().ForEach(m =>
+                        client.GetMessages().ForEach(m =>
                         {
                             if (m.Search(search))
                             {
@@ -57,6 +64,11 @@ namespace TPDesignPatterns
                         });
 
                         Console.WriteLine($"---------- SEARCH {search} ----------");
+                        break;
+                    default:
+                        displayCompleteMessage = true;
+                        client.Send(input);
+                        displayCompleteMessage = false;
                         break;
                 }
             }

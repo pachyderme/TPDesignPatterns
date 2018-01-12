@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 using TPDesignPatterns.Models.Clients.States;
 using TPDesignPatterns.Models.Historic.Memento;
 using TPDesignPatterns.Models.Exports;
+using TPDesignPatterns.Models.Messages;
+using System.Threading;
 
 namespace TPDesignPatterns.Models.Clients
 {
@@ -30,13 +32,14 @@ namespace TPDesignPatterns.Models.Clients
 
             State.Connected(this);
 
-            Console.WriteLine("================ ALL MESSAGES =================="); 
-
-            GetMessage().ForEach(m => Console.WriteLine(m.ToString())); 
-            Program.displayCompleteMessage = false; 
-
-            Console.WriteLine("================ ALL MESSAGES =================="); 
+            Historic.Historic.GetInstance().DisplayAllMessages();
         }
+
+        public List<Message> GetMessages()
+        {
+            return Historic.Historic.GetInstance().GetMessages();
+        }
+
         public void Disconnect()
         {
             if (State == null)
@@ -47,22 +50,17 @@ namespace TPDesignPatterns.Models.Clients
 
         public void OnStateChange()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Subscribe(IClientObserver co)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Unsubscribe(IClientObserver co)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Messages.Message> GetMessage()
-        {
-            return Historic.Historic.GetInstance().GetMessages();
+            throw new NotImplementedException();
         }
 
         public void Sauvegarder() => HistoricWatcher.addHistoricMemento(new HistoricMemento(this));
@@ -86,5 +84,21 @@ namespace TPDesignPatterns.Models.Clients
             ExportData.Export();
         }
 
+        /// <summary>
+        /// Send the message
+        /// </summary>
+        /// <returns></returns>
+        public void Send(string message)
+        {
+            Console.WriteLine("Sending message ...");
+
+            Thread.Sleep(1000);
+
+            Message m = new Message(message, this);
+            Database.Database.GetInstance().SaveMessage(m);
+            Console.Clear();
+
+            Historic.Historic.GetInstance().DisplayAllMessages();
+        }
     }
 }

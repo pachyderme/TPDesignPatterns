@@ -20,7 +20,14 @@ namespace TPDesignPatterns.Models.Database
             return _instance;
         }
 
-        public Database() { }
+        public Database() {
+            Messages = new List<Message>() {
+                new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", new Client("Titome")),
+                new Message("[i]Il fait trop chaud au brésil je trouve ça trop chouette !!! [b]vive le [l='https://bresil.com']brésil[/l][/b] !![/i]", new Client("Brésil")),
+                new Message("Merci toto [i]tu sers vraiment à [b]rien[/b].[/i]", new Client("Michel")),
+                new Message("[b]0[/b] + [c='#333']0[/c] = la tête à [l='http://toto.fr']toto[/l]", new Client("Toto"))
+            };
+        }
 
         /// <summary>
         /// Get all messages
@@ -30,13 +37,13 @@ namespace TPDesignPatterns.Models.Database
         /// <returns></returns>
         public List<Message> GetMessages(int index, int page)
         {
-            Messages = new List<Message>() {
-                new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", new Client("Titome")),
-                new Message("[i]Il fait trop chaud au brésil je trouve ça trop chouette !!! [b]vive le [l='https://bresil.com']brésil[/l][/b] !![/i]", new Client("Brésil")),
-                new Message("Merci toto [i]tu sers vraiment à [b]rien[/b].[/i]", new Client("Michel")),
-                new Message("[b]0[/b] + [c='#333']0[/c] = la tête à [l='http://toto.fr']toto[/l]", new Client("Toto"))
-            };
-            return Messages.OrderByDescending(m => m.SendDate).Take(index).ToList();
+            return Messages.OrderBy(m => m.SendDate).Take(index).ToList();
+        }
+
+        public void SaveMessage(Message m)
+        {
+            Messages.Add(m);
+            Console.WriteLine("Message Saved");
         }
     }
 }

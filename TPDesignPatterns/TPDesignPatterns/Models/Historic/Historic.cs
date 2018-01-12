@@ -18,24 +18,15 @@ namespace TPDesignPatterns.Models.Historic
 
         public List<Message> Messages { get; set; }
 
-        public MessageLoader ml;
+        public MessageLoader MessageLoader { get; set; }
 
         private Historic()
         {
-            Messages = new List<Message>() {
-                new Message("ITALIQUE + BOLD SIMPLE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null),
-                new Message("ITALIQUE + BOLD COMPLEXE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle [b]Titome[/b] et je suis imberbe[/i]", null),
-                new Message("LINK : [l='http://coucou.fr']test[/l]", null),
-                new Message("COLOR : [c='#333']test[/c]", null)
-            };
-
             Filters = new List<IMessageFilter>() {
                 new ColorMessageFilter(),
                 new FontMessageFilter(),
                 new LinkMessageFilter()
             };
-
-            
         }
 
         /// <summary>
@@ -44,10 +35,10 @@ namespace TPDesignPatterns.Models.Historic
         /// <returns></returns>
         public List<Message> GetMessages()
         {
-            if (ml == null)
-                ml = new MessageLoader();
+            if (MessageLoader == null)
+                MessageLoader = new MessageLoader();
 
-            Messages = ml.GetMessages();
+            Messages = MessageLoader.GetMessages();
             FilterAllMessages();
             return Messages;
         }
@@ -118,6 +109,18 @@ namespace TPDesignPatterns.Models.Historic
         public void Restaurer()
         {
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DisplayAllMessages()
+        {
+            Console.WriteLine("================ ALL MESSAGES ==================");
+
+            GetMessages().ForEach(m => Console.WriteLine(m.ToString()));
+
+            Console.WriteLine("================ ALL MESSAGES ==================");
         }
     }
 }
