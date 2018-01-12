@@ -18,9 +18,11 @@ namespace TPDesignPatterns.Models.Historic
 
         public List<Message> Messages { get; set; }
 
+        public MessageLoader ml;
+
         private Historic()
         {
-            Messages = new List<Message>() {
+            messages = new List<Message>() {
                 new Message("ITALIQUE + BOLD SIMPLE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null),
                 new Message("ITALIQUE + BOLD COMPLEXE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle [b]Titome[/b] et je suis imberbe[/i]", null),
                 new Message("LINK : [l='http://coucou.fr']test[/l]", null),
@@ -33,7 +35,21 @@ namespace TPDesignPatterns.Models.Historic
                 new LinkMessageFilter()
             };
 
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<Message> GetMessages()
+        {
+            if (ml == null)
+                ml = new MessageLoader();
+            
+            messages = ml.GetMessages();
             FilterAllMessages();
+            return messages;
         }
 
         /// <summary>
@@ -81,6 +97,27 @@ namespace TPDesignPatterns.Models.Historic
                     f.Filter(m.NodeContent);
                 }
             }
+        }
+
+        public Message GetLastMessage()
+        {
+            return messages[messages.Count-1];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Sauvegarder()
+        {
+            //hm.HistoricWatcher.addHistoricMemento();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Restaurer()
+        {
+
         }
     }
 }

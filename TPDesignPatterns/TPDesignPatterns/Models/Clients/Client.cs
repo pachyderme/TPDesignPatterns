@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using TPDesignPatterns.Models.Clients.States;
+using TPDesignPatterns.Models.Historic.Memento;
 
 namespace TPDesignPatterns.Models.Clients
 {
@@ -47,6 +48,12 @@ namespace TPDesignPatterns.Models.Clients
             throw new System.NotImplementedException();
         }
 
+        public List<Messages.Message> GetMessage()
+        {
+            return Historic.Historic.GetInstance().GetMessages();
+        }
+
+        public void Sauvegarder() => HistoriWatcher.addHistoricMemento(new HistoricMemento(this));
 
     }
 }
