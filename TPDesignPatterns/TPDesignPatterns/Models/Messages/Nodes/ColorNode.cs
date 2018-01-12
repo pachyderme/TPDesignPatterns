@@ -8,8 +8,6 @@ namespace TPDesignPatterns.Models.Messages.Nodes
     {
         public string Color { get; set; }
 
-        public ColorNode(string content) : base(content)
-        {
-        }
+        public ColorNode(string content) : base(content) { }
     }
 }

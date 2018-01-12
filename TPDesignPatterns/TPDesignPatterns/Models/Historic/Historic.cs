@@ -14,20 +14,20 @@ namespace TPDesignPatterns.Models.Historic
         /// </summary>
         private static Historic _instance;
 
-        public static List<IMessageFilter> filters;
+        public static List<IMessageFilter> Filters { get; set; }
 
-        public List<Message> messages;
+        public List<Message> Messages { get; set; }
 
         private Historic()
         {
-            messages = new List<Message>() {
+            Messages = new List<Message>() {
                 new Message("ITALIQUE + BOLD SIMPLE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null),
                 new Message("ITALIQUE + BOLD COMPLEXE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle [b]Titome[/b] et je suis imberbe[/i]", null),
                 new Message("LINK : [l='http://coucou.fr']test[/l]", null),
                 new Message("COLOR : [c='#333']test[/c]", null)
             };
 
-            filters = new List<IMessageFilter>() {
+            Filters = new List<IMessageFilter>() {
                 new ColorMessageFilter(),
                 new FontMessageFilter(),
                 new LinkMessageFilter()
@@ -57,7 +57,7 @@ namespace TPDesignPatterns.Models.Historic
         {
             Message result = null;
 
-            foreach(Message m in messages)
+            foreach(Message m in Messages)
             {
                 if (m.Search(s))
                 {
@@ -74,11 +74,11 @@ namespace TPDesignPatterns.Models.Historic
         /// </summary>
         private void FilterAllMessages()
         {
-            foreach(Message m in messages)
+            foreach(Message m in Messages)
             {
-                foreach(IMessageFilter f in filters)
+                foreach(IMessageFilter f in Filters)
                 {
-                    f.Filter(m.nodeContent);
+                    f.Filter(m.NodeContent);
                 }
             }
         }

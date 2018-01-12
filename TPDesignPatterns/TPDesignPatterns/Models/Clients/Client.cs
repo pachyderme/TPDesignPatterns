@@ -9,28 +9,27 @@ namespace TPDesignPatterns.Models.Clients
 {
     public class Client : IClientObservable
     {
-        public List<ClientObserver> clientObservers { get; set; }
-        public ClientState state { get; set; }
-
+        public List<ClientObserver> ClientObservers { get; set; }
+        public ClientState State { get; set; }
 
         public Client()
         {
-            clientObservers = new List<ClientObserver>();
+            ClientObservers = new List<ClientObserver>();
         }
 
         public void Connect()
         {
-            if(state == null)
-                state = new ConnectedState();
+            if(State == null)
+                State = new ConnectedState();
             
-            state.Connected(this);
+            State.Connected(this);
         }
         public void Disconnect()
         {
-            if (state == null)
-                state = new DisconnectedState();
+            if (State == null)
+                State = new DisconnectedState();
 
-            state.Disconnected(this);
+            State.Disconnected(this);
         }
 
         public void OnStateChange()

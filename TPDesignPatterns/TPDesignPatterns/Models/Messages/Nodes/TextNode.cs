@@ -11,13 +11,14 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         Underline,
         None
     }
+
     public class TextNode : Node
     {
-        public FontStyle fs;
+        public FontStyle Fs { get; set; };
 
         public TextNode(string content, FontStyle fs = FontStyle.None) : base(content)
         {
-            this.fs = fs;
+            this.Fs = fs;
         }
     }
 }

@@ -12,9 +12,9 @@ namespace TPDesignPatterns.Models.Messages.Filters
 
         public void Filter(Node n)
         {
-            if (n.childrenNodes.Count != 0)
+            if (n.ChildrenNodes.Count != 0)
             {
-                foreach (Node nChild in n.childrenNodes)
+                foreach (Node nChild in n.ChildrenNodes)
                 {
                     Filter(nChild);
                 }
@@ -27,18 +27,18 @@ namespace TPDesignPatterns.Models.Messages.Filters
 
         protected void AddNode(Match m, Node n, int count, Node parent)
         {
-            parent.stringContent = parent.stringContent.Replace(m.Value, $"[{count}]");
-            parent.childrenNodes.Add(n);
+            parent.StringContent = parent.StringContent.Replace(m.Value, $"[{count}]");
+            parent.ChildrenNodes.Add(n);
             Filter(n);
         }
 
         protected string RemoveTags(string startTag, string endTag, Match m)
         {
-            //[i]
+            //Remove the first tag
             Regex regex = new Regex(Regex.Escape(startTag));
             string result = regex?.Replace(m.Value, string.Empty, 1);
 
-            //[/i]
+            //Remove the last tag
             int place = result.LastIndexOf(endTag);
             return result.Remove(place, endTag.Length).Insert(place, string.Empty);
         }

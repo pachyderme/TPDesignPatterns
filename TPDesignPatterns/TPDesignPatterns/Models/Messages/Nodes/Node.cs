@@ -7,28 +7,28 @@ namespace TPDesignPatterns.Models.Messages.Nodes
     public abstract class Node
     {
         /// <summary>
-        /// 
+        /// Get / Set next node
         /// </summary>
-        public Node next { get; set; }
+        public Node Next { get; set; }
 
         /// <summary>
-        /// 
+        /// Get / Set children nodes
         /// </summary>
-        public List<Node> childrenNodes { get; set; }
+        public List<Node> ChildrenNodes { get; set; }
 
         /// <summary>
-        /// 
+        /// Get / Set the node's content
         /// </summary>
-        public string stringContent { get; set; }
+        public string StringContent { get; set; }
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
         /// <param name="content"></param>
         public Node(string content)
         {
-            stringContent = content;
-            childrenNodes = new List<Node>();
+            StringContent = content;
+            ChildrenNodes = new List<Node>();
         }
 
         /// <summary>
@@ -41,17 +41,17 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         }
 
         /// <summary>
-        /// 
+        /// Check if the string is in the current node or in his children
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public bool Find(string s)
         {
-            bool result = stringContent.ToLower().Contains(s.ToLower());
+            bool result = StringContent.ToLower().Contains(s.ToLower());
 
             if (!result)
             {
-                foreach (Node n in childrenNodes)
+                foreach (Node n in ChildrenNodes)
                 {
                     result = n.Find(s);
 
@@ -66,15 +66,15 @@ namespace TPDesignPatterns.Models.Messages.Nodes
         }
 
         /// <summary>
-        /// 
+        /// Stringify the node
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
             StringBuilder result = new StringBuilder();
-            result.AppendLine(stringContent);
+            result.AppendLine(StringContent);
             if (Program.displayCompleteMessage)
-                childrenNodes.ForEach(c =>
+                ChildrenNodes.ForEach(c =>
                 {
                     result.AppendLine(c.ToString());
                 });

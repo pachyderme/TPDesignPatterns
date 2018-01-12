@@ -14,7 +14,7 @@ namespace TPDesignPatterns
     class Program
     {
         public static bool displayCompleteMessage = true;
-        public static IExportData exportData { get; set; }
+        public static IExportData ExportData { get; set; }
 
         static void Main(string[] args)
         {
@@ -22,7 +22,7 @@ namespace TPDesignPatterns
 
             Console.WriteLine("================ ALL MESSAGES ==================");
 
-            h.messages.ForEach(m => Console.WriteLine(m.ToString()));
+            h.Messages.ForEach(m => Console.WriteLine(m.ToString()));
             displayCompleteMessage = false;
 
             Console.WriteLine("================ ALL MESSAGES ==================");
@@ -40,22 +40,22 @@ namespace TPDesignPatterns
                 switch (search.ToUpper())
                 {
                     case Command.EXPORTJSON:
-                        exportData = new ExportJSON();
+                        ExportData = new ExportJSON();
                         isExport = true;
                         break;
                     case Command.EXPORTSQL:
-                        exportData = new ExportSQL();
+                        ExportData = new ExportSQL();
                         isExport = true;
                         break;
                     case Command.EXPORTXML:
-                        exportData = new ExportXML();
+                        ExportData = new ExportXML();
                         isExport = true;
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Green;
 
                         Console.WriteLine($"---------- SEARCH {search} ----------");
-                        h.messages.ForEach(m => {
+                        h.Messages.ForEach(m => {
                             if (m.Search(search))
                             {
                                 Console.WriteLine(m.ToString());
@@ -69,7 +69,7 @@ namespace TPDesignPatterns
 
                 if (isExport)
                 {
-                    exportData.Export();
+                    ExportData.Export();
                 }
                     
             }
