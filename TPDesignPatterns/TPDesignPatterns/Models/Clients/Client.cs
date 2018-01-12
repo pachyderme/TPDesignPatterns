@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using TPDesignPatterns.Models.Clients.States;
 using TPDesignPatterns.Models.Historic.Memento;
+using TPDesignPatterns.Models.Exports;
 
 namespace TPDesignPatterns.Models.Clients
 {
@@ -13,6 +14,7 @@ namespace TPDesignPatterns.Models.Clients
         public List<ClientObserver> ClientObservers { get; set; }
         public ClientState State { get; set; }
         public HistoricWatcher HistoricWatcher { get; set; }
+        public static IExportData ExportData { get; set; }
         public string Pseudo { get; set; }
 
         public Client(string pseudo)
@@ -65,6 +67,24 @@ namespace TPDesignPatterns.Models.Clients
 
         public void Sauvegarder() => HistoricWatcher.addHistoricMemento(new HistoricMemento(this));
         public void Restore() => HistoricWatcher.getHistoricMemento();
+
+        public void Export(string exportDataType)
+        {
+            switch (exportDataType)
+            {
+                case ExportDataType.JSON:
+                    ExportData = new ExportJSON();
+                    break;
+                case ExportDataType.XML:
+                    ExportData = new ExportXML();
+                    break;
+                case ExportDataType.SQL:
+                    ExportData = new ExportSQL();
+                    break;
+            }
+
+            ExportData.Export();
+        }
 
     }
 }

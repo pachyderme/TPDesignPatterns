@@ -80,7 +80,7 @@ namespace TPDesignPatterns.Models.Messages
         /// <returns></returns>
         public override string ToString()
         {
-            return NodeContent.ToString();
+            return $"{Sender?.Pseudo} : {NodeContent.ToString()}";
         }
 
         /// <summary>
@@ -93,6 +93,10 @@ namespace TPDesignPatterns.Models.Messages
             return new TextNode(content);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Message> GetMessages()
         {
             throw new NotImplementedException();

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TPDesignPatterns.Models.Exports
 {
-    interface IExportData
+    public interface IExportData
     {
         void Export();
     }

@@ -20,13 +20,10 @@ namespace TPDesignPatterns.Models.Database
             return _instance;
         }
 
-        public Database()
-        {
-
-        }
+        public Database() { }
 
         /// <summary>
-        /// 
+        /// Get all messages
         /// </summary>
         /// <param name="index">Nombre de résultats retournés</param>
         /// <param name="page">Numéro de la page à récupérer</param>

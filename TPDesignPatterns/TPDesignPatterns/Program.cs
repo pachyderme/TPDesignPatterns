@@ -17,7 +17,6 @@ namespace TPDesignPatterns
     class Program
     {
         public static bool displayCompleteMessage = true;
-        public static IExportData ExportData { get; set; }
 
         static void Main(string[] args)
         {
@@ -31,21 +30,16 @@ namespace TPDesignPatterns
                 Console.WriteLine("SEARCH / COMMAND (EXPORTSQL | EXPORTJSON | EXPORTXML) : ");
                 String search = Console.ReadLine();
 
-                bool isExport = false;
-
                 switch (search.ToUpper())
                 {
                     case Command.EXPORTJSON:
-                        ExportData = new ExportJSON();
-                        isExport = true;
+                        client.Export(ExportDataType.JSON);
                         break;
                     case Command.EXPORTSQL:
-                        ExportData = new ExportSQL();
-                        isExport = true;
+                        client.Export(ExportDataType.SQL);
                         break;
                     case Command.EXPORTXML:
-                        ExportData = new ExportXML();
-                        isExport = true;
+                        client.Export(ExportDataType.XML);
                         break;
                     case Command.DISCONNECT:
                         client.Disconnect();
@@ -64,11 +58,6 @@ namespace TPDesignPatterns
 
                         Console.WriteLine($"---------- SEARCH {search} ----------");
                         break;
-                }
-
-                if (isExport)
-                {
-                    ExportData.Export();
                 }
             }
         }
