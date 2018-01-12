@@ -38,7 +38,7 @@ namespace TPDesignPatterns.Models.Database
                 new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null),
                 new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null)
             };
-            return Messages.OrderByDescending(m => m.sendDate).Take(index).ToList();
+            return Messages.OrderByDescending(m => m.SendDate).Take(index).ToList();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace TPDesignPatterns.Models.Clients
     {
         public List<ClientObserver> ClientObservers { get; set; }
         public ClientState State { get; set; }
+        public HistoricWatcher HistoricWatcher { get; set; }
 
         public Client()
         {
@@ -53,7 +54,7 @@ namespace TPDesignPatterns.Models.Clients
             return Historic.Historic.GetInstance().GetMessages();
         }
 
-        public void Sauvegarder() => HistoriWatcher.addHistoricMemento(new HistoricMemento(this));
+        public void Sauvegarder() => HistoricWatcher.addHistoricMemento(new HistoricMemento(this));
 
     }
 }

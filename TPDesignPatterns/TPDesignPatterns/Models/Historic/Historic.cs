@@ -22,7 +22,7 @@ namespace TPDesignPatterns.Models.Historic
 
         private Historic()
         {
-            messages = new List<Message>() {
+            Messages = new List<Message>() {
                 new Message("ITALIQUE + BOLD SIMPLE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null),
                 new Message("ITALIQUE + BOLD COMPLEXE : Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle [b]Titome[/b] et je suis imberbe[/i]", null),
                 new Message("LINK : [l='http://coucou.fr']test[/l]", null),
@@ -46,10 +46,10 @@ namespace TPDesignPatterns.Models.Historic
         {
             if (ml == null)
                 ml = new MessageLoader();
-            
-            messages = ml.GetMessages();
+
+            Messages = ml.GetMessages();
             FilterAllMessages();
-            return messages;
+            return Messages;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace TPDesignPatterns.Models.Historic
 
         public Message GetLastMessage()
         {
-            return messages[messages.Count-1];
+            return Messages[Messages.Count-1];
         }
 
         /// <summary>
