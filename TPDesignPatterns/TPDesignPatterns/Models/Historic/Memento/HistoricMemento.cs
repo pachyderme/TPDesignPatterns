@@ -8,7 +8,7 @@ namespace TPDesignPatterns.Models.Historic.Memento
 {
     public class HistoricMemento
     {
-        public HistoricWatcher HistoricWatcher { get; set; }
+        public DateTime SavingDate { get; set; }
         public Message Message { get; set; }
         public Client Client { get; set; }
 
@@ -16,6 +16,7 @@ namespace TPDesignPatterns.Models.Historic.Memento
         {
             Client = client;
             Message = Historic.GetInstance().GetLastMessage();
+            SavingDate = DateTime.Now;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace TPDesignPatterns.Models.Clients.States
     {
         public override void Connected(Client c)
         {
+            c.Restore();
             SetState(c, new ConnectedState());
         }
 

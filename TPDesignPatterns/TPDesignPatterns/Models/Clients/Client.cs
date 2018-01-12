@@ -64,6 +64,7 @@ namespace TPDesignPatterns.Models.Clients
         }
 
         public void Sauvegarder() => HistoricWatcher.addHistoricMemento(new HistoricMemento(this));
+        public void Restore() => HistoricWatcher.getHistoricMemento();
 
     }
 }
