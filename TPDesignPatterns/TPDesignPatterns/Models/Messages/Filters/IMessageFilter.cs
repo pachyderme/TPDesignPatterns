@@ -7,6 +7,6 @@ namespace TPDesignPatterns.Models.Messages.Filters
 {
     public interface IMessageFilter
     {
-        void Filter(Node m);
+        void Filter(Node n);
     }
 }

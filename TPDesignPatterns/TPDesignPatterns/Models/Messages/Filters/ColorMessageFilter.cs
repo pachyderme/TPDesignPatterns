@@ -8,16 +8,27 @@ namespace TPDesignPatterns.Models.Messages.Filters
 {
     public class ColorMessageFilter : MessageFilter
     {
-        public override void Filter(Node n)
+        protected override void FilterNode(Node n)
         {
-            Regex myRegex = new Regex("#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})");
-            foreach (Match m in myRegex.Matches(n.stringContent))
+            Regex baseRegex = new Regex(@"(\[*c='(.*)']).*?(\[\/c])");
+
+            int count = 0;
+            foreach (Match m in baseRegex.Matches(n.stringContent))
             {
-                ColorNode cn = new ColorNode(m.Value);
-                n.childrenNodes.Add(cn);
+                Regex colorRegex = new Regex(@"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})");
+
+                ColorNode cn = new ColorNode(string.Empty);
+
+                foreach (Match mColor in colorRegex.Matches(m.Value))
+                {
+                    cn.Color = mColor.Value;
+                }
+
+                cn.stringContent = RemoveTags($"[c='{cn.Color}']", "[/c]", m);
+
+                AddNode(m, cn, count, n);
+                count++;
             }
         }
-
-
     }
 }

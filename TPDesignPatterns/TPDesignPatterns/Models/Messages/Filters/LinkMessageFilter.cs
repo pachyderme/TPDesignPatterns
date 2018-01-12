@@ -8,14 +8,26 @@ namespace TPDesignPatterns.Models.Messages.Filters
 {
     public class LinkMessageFilter : MessageFilter
     {
-        public override void Filter(Node n)
+        protected override void FilterNode(Node n)
         {
-            Regex myRegex = new Regex(@"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)");
+            Regex baseRegex = new Regex(@"(\[*l='(.*)']).*?(\[\/l])");
 
-            foreach (Match m in myRegex.Matches(n.stringContent))
+            int count = 0;
+            foreach (Match m in baseRegex.Matches(n.stringContent))
             {
-                LinkNode ln = new LinkNode(m.Value);
-                n.childrenNodes.Add(ln);
+                Regex linkRegex = new Regex(@"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)");
+
+                LinkNode ln = new LinkNode(string.Empty);
+
+                foreach (Match mLink in linkRegex.Matches(m.Value))
+                {
+                    ln.Link = mLink.Value;
+                }
+
+                ln.stringContent = RemoveTags($"[l='{ln.Link}']", "[/l]", m);
+
+                AddNode(m, ln, count, n);
+                count++;
             }
         }
     }
