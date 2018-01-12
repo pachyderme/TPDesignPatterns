@@ -14,17 +14,17 @@ namespace TPDesignPatterns.Models.Historic
         /// </summary>
         private static Historic _instance;
 
+        public Memento.HistoricMemento hm;
+
         public static List<IMessageFilter> filters;
 
         public List<Message> messages;
 
+        public MessageLoader ml;
+
         private Historic()
         {
-            messages = new List<Message>() {
-                new Message("Hey ! coucou ! saaalluuuttt !! #545454 http://coucou.fr", null),
-                new Message("Chouette ! Youyouuu!! #FFF https://coucou.fr/chouette", null),
-                new Message("Bo[i]nj[/i]our, [b]je[/b] [i]m'appelle[/i] Titome", null)
-            };
+
 
             filters = new List<IMessageFilter>() {
                 new ColorMessageFilter(),
@@ -32,7 +32,21 @@ namespace TPDesignPatterns.Models.Historic
                 new LinkMessageFilter()
             };
 
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<Message> GetMessages()
+        {
+            if (ml == null)
+                ml = new MessageLoader();
+            
+            messages = ml.GetMessages();
             FilterAllMessages();
+            return messages;
         }
 
         /// <summary>
@@ -80,6 +94,27 @@ namespace TPDesignPatterns.Models.Historic
                     f.Filter(m.nodeContent);
                 }
             }
+        }
+
+        public Message GetLastMessage()
+        {
+            return messages[messages.Count-1];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Sauvegarder()
+        {
+            //hm.HistoricWatcher.addHistoricMemento();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Restaurer()
+        {
+
         }
     }
 }

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using TPDesignPatterns.Models.Messages.Nodes;
 using TPDesignPatterns.Models.Clients;
+using TPDesignPatterns.Models.Database;
 
 namespace TPDesignPatterns.Models.Messages
 {
     public class Message : IMessage
-    {
+    {        
         /// <summary>
         /// 
         /// </summary>
@@ -52,9 +53,9 @@ namespace TPDesignPatterns.Models.Messages
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Message> GetMessages()
+        public static List<Message> GetMessages(int index, int page)
         {
-            throw new NotImplementedException();
+            return Database.Database.GetInstance().GetMessages(index, page);
         }
 
         /// <summary>
@@ -93,6 +94,11 @@ namespace TPDesignPatterns.Models.Messages
         private Node GetNodeContent(string content)
         {
             return new TextNode(content);
+        }
+
+        public List<Message> GetMessages()
+        {
+            throw new NotImplementedException();
         }
     }
 }
