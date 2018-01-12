@@ -8,8 +8,6 @@ namespace TPDesignPatterns.Models.Messages.Nodes
     {
         public string Link { get; set; }
 
-        public LinkNode(string content) : base(content)
-        {
-        }
+        public LinkNode(string content) : base(content) { }
     }
 }

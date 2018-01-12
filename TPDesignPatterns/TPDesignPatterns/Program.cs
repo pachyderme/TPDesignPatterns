@@ -16,7 +16,7 @@ namespace TPDesignPatterns
     class Program
     {
         public static bool displayCompleteMessage = true;
-        public static IExportData exportData { get; set; }
+        public static IExportData ExportData { get; set; }
 
         static void Main(string[] args)
         {

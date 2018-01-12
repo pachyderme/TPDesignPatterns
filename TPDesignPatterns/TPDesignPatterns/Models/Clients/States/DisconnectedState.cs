@@ -15,7 +15,5 @@ namespace TPDesignPatterns.Models.Clients.States
         {
             SetState(c, this);
         }
-
-        
     }
 }

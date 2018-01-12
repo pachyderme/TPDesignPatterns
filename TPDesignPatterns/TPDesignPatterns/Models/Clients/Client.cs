@@ -18,9 +18,7 @@ namespace TPDesignPatterns.Models.Clients
 
         public Client()
         {
-            clientObservers = new List<ClientObserver>();
-            HistoriWatcher = new Historic.Memento.HistoricWatcher();
-
+            ClientObservers = new List<ClientObserver>();
         }
 
         public void Connect()
@@ -39,10 +37,10 @@ namespace TPDesignPatterns.Models.Clients
         }
         public void Disconnect()
         {
-            if (state == null)
-                state = new DisconnectedState();
+            if (State == null)
+                State = new DisconnectedState();
 
-            state.Disconnected(this);
+            State.Disconnected(this);
         }
 
         public void OnStateChange()

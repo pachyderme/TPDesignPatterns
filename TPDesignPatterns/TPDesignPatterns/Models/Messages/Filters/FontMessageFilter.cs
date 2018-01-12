@@ -17,7 +17,7 @@ namespace TPDesignPatterns.Models.Messages.Filters
             Regex myRegex = new Regex(@"(\[*i]).*?(\[/i])|(\[b])(.*?)(\[/b])|(\[u])(.*?)(\[/u])");
 
             int count = 0;
-            foreach (Match m in myRegex.Matches(n.stringContent))
+            foreach (Match m in myRegex.Matches(n.StringContent))
             {
                 string endTag = string.Empty;
                 string startTag = string.Empty;
