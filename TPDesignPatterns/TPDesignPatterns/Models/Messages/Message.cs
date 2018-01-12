@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TPDesignPatterns.Models.Messages.Nodes;
-using TPDesignPatterns.Models.Users;
+using TPDesignPatterns.Models.Clients;
 
 namespace TPDesignPatterns.Models.Messages
 {
@@ -25,7 +25,7 @@ namespace TPDesignPatterns.Models.Messages
         /// <summary>
         /// 
         /// </summary>
-        public User sender { get; set; }
+        public Client sender { get; set; }
 
         /// <summary>
         /// 
@@ -40,7 +40,7 @@ namespace TPDesignPatterns.Models.Messages
         /// </summary>
         /// <param name="content"></param>
         /// <param name="sender"></param>
-        public Message(string content, User sender)
+        public Message(string content, Client sender)
         {
             stringContent = content;
             this.sender = sender;
