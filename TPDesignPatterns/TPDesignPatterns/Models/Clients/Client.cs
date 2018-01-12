@@ -13,7 +13,7 @@ namespace TPDesignPatterns.Models.Clients
         public List<ClientObserver> clientObservers { get; set; }
         public ClientState state { get; set; }
         public HistoricWatcher HistoriWatcher { get; set; }
-        
+
 
 
         public Client()
@@ -25,17 +25,17 @@ namespace TPDesignPatterns.Models.Clients
 
         public void Connect()
         {
-            if(state == null)
+            if (state == null)
                 state = new ConnectedState();
-            
+
             state.Connected(this);
 
-            Console.WriteLine("================ ALL MESSAGES ==================");
+            Console.WriteLine("================ ALL MESSAGES =================="); 
 
-            GetMessage().ForEach(m => Console.WriteLine(m.ToString()));
-            Program.displayCompleteMessage = false;
+            GetMessage().ForEach(m => Console.WriteLine(m.ToString())); 
+            Program.displayCompleteMessage = false; 
 
-            Console.WriteLine("================ ALL MESSAGES ==================");
+            Console.WriteLine("================ ALL MESSAGES =================="); 
         }
         public void Disconnect()
         {
@@ -65,7 +65,7 @@ namespace TPDesignPatterns.Models.Clients
             return Historic.Historic.GetInstance().GetMessages();
         }
 
-        public void Sauvegarder() => HistoriWatcher.addHistoricMemento(new HistoricMemento(this));
+        public void Save() => HistoriWatcher.addHistoricMemento(new HistoricMemento(this));
 
     }
 }
