@@ -29,7 +29,13 @@ namespace TPDesignPatterns
             {
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Console.WriteLine("SEARCH / COMMAND (EXPORTSQL | EXPORTJSON | EXPORTXML) : ");
+                Console.WriteLine("COMMANDS : (EXPORTSQL | EXPORTJSON | EXPORTXML | SEARCH) ");
+                Console.WriteLine("TAGS : [b][/b] : BOLD");
+                Console.WriteLine("TAGS : [i][/i] : ITALIC");
+                Console.WriteLine("TAGS : [u][/u] : UNDERLINE");
+                Console.WriteLine("TAGS : [l='http://mylink.com']link name[/l] : LINK");
+                Console.WriteLine("TAGS : [c='#333'][/c] : COLOR");
+                Console.WriteLine("Enter command or text.....");
                 String input = Console.ReadLine();
 
                 switch (input.ToUpper())
